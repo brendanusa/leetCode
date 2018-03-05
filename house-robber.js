@@ -3,24 +3,33 @@
  * @return {number}
  */
 
+
 var rob = function(nums) {
 
-  let highestTotal = 0;
+ // NAIVE
+//   let highestTotal = 0;
 
-  const addTotal = (tempTotal, i) => {
-    console.log('i', i)
-    if (i >= nums.length) {
-      return highestTotal = tempTotal > highestTotal ? tempTotal : highestTotal;
-    }
-    tempTotal += nums[i];
-    addTotal(tempTotal, i + 2);
-    addTotal(tempTotal, i + 3);
-  }
+//   const addTotal = (tempTotal, i) => {
+//     if (i >= nums.length) {
+//       return highestTotal = tempTotal > highestTotal ? tempTotal : highestTotal;
+//     }
+//     tempTotal += nums[i];
+//     addTotal(tempTotal, i + 2);
+//     addTotal(tempTotal, i + 3);
+//   }
 
-  addTotal(0, 0);
-  addTotal(0, 1);
+//   addTotal(0, 0);
+//   addTotal(0, 1);
 
-  return highestTotal;
+//   return highestTotal;
+
+  numsMap = nums.reduce((acc, val, i) => {
+    acc.push([val, i])
+    return acc;
+  }, []).sort((a, b) => a[0] - b[0]);
+
+  console.log(numsMap)
+
 
 };
 
